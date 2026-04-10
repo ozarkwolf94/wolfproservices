@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WolfPro Services LLC — Professional services</title>
+    <meta
+      name="description"
+      content="WolfPro Services LLC: metrology, app development, DJ services, audio production, electronics repair. Based at wolfproservices.com."
+    />
+    <link rel="canonical" href="https://wolfproservices.com/" />
+    <meta property="og:url" content="https://wolfproservices.com/" />
+    <meta property="og:title" content="WolfPro Services LLC" />
+    <meta
+      property="og:description"
+      content="Metrology, software, sound, and electronics — professional services."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html" data-site-company>WolfPro Services LLC</a>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="index.html" data-nav="home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="projects.html" data-nav="projects">Projects</a></li>
+            <li>
+              <a class="nav-music" href="https://claytonwolfmusic.com" data-music-url target="_blank" rel="noopener noreferrer"
+                ><span data-music-label>Clayton Wolf Music</span> ↗</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <h1 data-hero-title>WolfPro Services LLC</h1>
+        <p class="lede" data-hero-lede>
+          Metrology, software, sound, and electronics — professional services under one roof.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="projects.html">View projects</a>
+          <a class="btn btn-ghost" href="#services">Explore services</a>
+        </div>
+      </section>
+
+      <section aria-labelledby="music-heading">
+        <h2 id="music-heading">Music &amp; artist site</h2>
+        <div class="music-banner">
+          <p>
+            <strong data-music-label>Clayton Wolf Music</strong> —
+            <span data-music-description
+              >DJ sets, electronic music production, and releases — my dedicated music home.</span
+            >
+          </p>
+          <a
+            class="btn btn-primary"
+            href="https://claytonwolfmusic.com"
+            data-music-url
+            target="_blank"
+            rel="noopener noreferrer"
+            >Visit claytonwolfmusic.com ↗</a
+          >
+        </div>
+      </section>
+
+      <section id="services" aria-labelledby="services-heading">
+        <h2 id="services-heading">Services</h2>
+        <p class="lede" style="margin-bottom: 1.25rem; max-width: 40rem; color: var(--muted)">
+          Each card pulls copy from <code style="font-size: 0.9em">js/site-config.js</code> — edit that file to
+          update blurbs, mailto links, and ordering.
+        </p>
+        <div id="service-grid" class="service-grid"></div>
+      </section>
+
+      <section aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <div class="about-block">
+          <p>
+            WolfPro Services LLC brings together technical precision and creative work: metrology, application
+            development, live DJ performance, electronic music production, and electronics repair. Use this site as
+            the hub for professional inquiries; music and releases live on
+            <a href="https://claytonwolfmusic.com" data-music-url target="_blank" rel="noopener noreferrer"
+              ><span data-music-label>Clayton Wolf Music</span></a
+            >.
+          </p>
+          <p>
+            <strong>Contact:</strong>
+            <a href="mailto:hello@wolfproservices.com" data-site-email>hello@wolfproservices.com</a>
+            <span data-site-domain style="display: none">wolfproservices.com</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>
+          © <span data-footer-year></span>
+          <span data-site-company>WolfPro Services LLC</span> ·
+          <span data-site-domain>wolfproservices.com</span>
+        </p>
+        <div class="footer-links">
+          <a href="projects.html">Projects</a>
+          <a href="https://claytonwolfmusic.com" data-music-url target="_blank" rel="noopener noreferrer">Music site ↗</a>
+          <a href="mailto:hello@wolfproservices.com" data-site-email>Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/site-config.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        window.wolfproInit({ currentNav: "home" });
+      });
+    </script>
+  </body>
+</html>

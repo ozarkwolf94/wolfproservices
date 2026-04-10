@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects — WolfPro Services LLC</title>
+    <meta
+      name="description"
+      content="Selected work and projects from WolfPro Services LLC — apps, metrology, audio, and more."
+    />
+    <link rel="canonical" href="https://wolfproservices.com/projects.html" />
+    <meta property="og:url" content="https://wolfproservices.com/projects.html" />
+    <meta property="og:title" content="Projects — WolfPro Services LLC" />
+    <meta property="og:description" content="Selected work and in-progress projects." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html" data-site-company>WolfPro Services LLC</a>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="index.html" data-nav="home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="projects.html" data-nav="projects">Projects</a></li>
+            <li>
+              <a class="nav-music" href="https://claytonwolfmusic.com" data-music-url target="_blank" rel="noopener noreferrer"
+                ><span data-music-label>Clayton Wolf Music</span> ↗</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="page-intro">
+        <h1>Projects</h1>
+        <p>
+          Highlights and case studies will live here. Add, remove, or edit entries in
+          <code style="font-size: 0.95em">js/site-config.js</code> under <code style="font-size: 0.95em">projects</code>
+          — set <code style="font-size: 0.95em">href</code> and <code style="font-size: 0.95em">linkLabel</code> when you
+          have a public link.
+        </p>
+      </div>
+
+      <div id="project-grid" class="project-grid"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>
+          © <span data-footer-year></span>
+          <span data-site-company>WolfPro Services LLC</span> ·
+          <span data-site-domain>wolfproservices.com</span>
+        </p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="https://claytonwolfmusic.com" data-music-url target="_blank" rel="noopener noreferrer">Music site ↗</a>
+          <a href="mailto:hello@wolfproservices.com" data-site-email>Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/site-config.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        window.wolfproInit({ currentNav: "projects" });
+      });
+    </script>
+  </body>
+</html>
