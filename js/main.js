@@ -6,6 +6,46 @@
     return window.WOLFPRO_SITE || {};
   }
 
+  function applyBranding() {
+    const cfg = getConfig();
+    const href = cfg.siteFavicon;
+    const head = document.head;
+    if (!href || !head) return;
+    document.querySelectorAll("link[data-wolfpro-favicon]").forEach(function (n) {
+      n.remove();
+    });
+    const icon = document.createElement("link");
+    icon.rel = "icon";
+    icon.type = "image/png";
+    icon.href = href;
+    icon.setAttribute("data-wolfpro-favicon", "");
+    head.appendChild(icon);
+    const apple = document.createElement("link");
+    apple.rel = "apple-touch-icon";
+    apple.href = href;
+    apple.setAttribute("data-wolfpro-favicon", "");
+    head.appendChild(apple);
+  }
+
+  function renderSiteBanner() {
+    const wrap = document.querySelector("[data-site-banner-wrap]");
+    if (!wrap) return;
+    const cfg = getConfig();
+    const b = cfg.siteBanner;
+    if (!b || !b.src) {
+      wrap.innerHTML = "";
+      return;
+    }
+    wrap.innerHTML =
+      '<figure class="site-banner">' +
+      '<img src="' +
+      escapeAttr(b.src) +
+      '" alt="' +
+      escapeAttr(b.alt || cfg.company || "WolfPro Services") +
+      '" width="2200" height="600" loading="eager" decoding="async" />' +
+      "</figure>";
+  }
+
   function fillHeaderFooter(currentNav) {
     const cfg = getConfig();
     const year = new Date().getFullYear();
@@ -127,7 +167,7 @@
     root.innerHTML = "";
     apps.forEach(function (app, index) {
       const article = document.createElement("article");
-      article.className = "app-card";
+      article.className = "app-card" + (app.logo ? "" : " app-card--no-logo");
       const titleId = app.id ? app.id + "-title" : "featured-app-title-" + index;
       if (app.id) article.id = app.id;
       article.setAttribute("aria-labelledby", titleId);
@@ -424,7 +464,9 @@
 
   window.wolfproInit = function (opts) {
     opts = opts || {};
+    applyBranding();
     fillHeaderFooter(opts.currentNav);
+    renderSiteBanner();
     fillHero();
     renderHeroVisual();
     fillSectionIntros();

@@ -7,6 +7,15 @@ window.WOLFPRO_SITE = {
   company: "WolfPro Services LLC",
   domain: "wolfproservices.com",
 
+  /** Browser tab / bookmark icon */
+  siteFavicon: "assets/images/wolfpro_wolfhead_wrench_logo_white.png",
+
+  /** Full-width banner under the header (home + projects). */
+  siteBanner: {
+    src: "assets/images/wolfpro_banner.png",
+    alt: "WolfPro Services LLC",
+  },
+
   /** Shown in meta / fallback; primary story is in heroLede */
   tagline:
     "Industrial metrology, nationwide field technical work, and software that fits how your business actually runs.",
@@ -113,7 +122,7 @@ window.WOLFPRO_SITE = {
   },
 
   appsIntro:
-    "Products under active development — Flutter and adjacent stacks, with the same rigor I bring to measurement and field work.",
+    "Products under active development — Flutter flagship apps, Python automation (including ComfyUI workflows), and field-ready tools, with the same rigor I bring to measurement and field work.",
 
   servicesIntro:
     "Engagements are shaped around outcomes: correct geometry, reliable hardware and software, and clear communication with your team.",
@@ -146,6 +155,24 @@ If you are hiring or need contract support — metrology, field technical leader
       logo: "assets/images/metrilog_logo.png",
       description:
         "MetriLog is a streamlined time and location-tracking application designed for the modern mobile professional. It simplifies the complexity of managing a busy schedule by offering precise logging for travel, work hours, and job-site data in one intuitive interface. Built to handle the demands of frequent travel and diverse project roles, the app ensures that every mile and every minute is accurately recorded, allowing users to focus on the work itself rather than the paperwork.",
+      href: null,
+      linkLabel: null,
+    },
+    {
+      id: "comfyworker",
+      title: "ComfyWorker",
+      logo: null,
+      description:
+        "A Python-based application that automates running ComfyUI and exposes a working HTTP endpoint for that automation. It is built for batch, local image generation on your own hardware — no subscription fees and no reliance on external datacenters — so pipelines stay private, predictable, and under your control.",
+      href: null,
+      linkLabel: null,
+    },
+    {
+      id: "find-my-foreman",
+      title: "Find my Foreman",
+      logo: null,
+      description:
+        "A work-in-progress side project: with purchased GPS tracking modules, crews can see where their foremen or field workers are on the ground — a simple, practical answer to “where is everyone?” on busy job sites. Built for fun and experimentation around location-aware field tools.",
       href: null,
       linkLabel: null,
     },
@@ -221,6 +248,24 @@ If you are hiring or need contract support — metrology, field technical leader
       tags: ["Mobile", "Time tracking", "Location"],
       blurb:
         "Time and location logging for mobile professionals — travel, hours, and job-site data in one intuitive flow.",
+      href: null,
+      linkLabel: null,
+    },
+    {
+      title: "ComfyWorker",
+      status: "Active development",
+      tags: ["Python", "ComfyUI", "Local", "Batch imaging", "Automation"],
+      blurb:
+        "Python architecture to automate ComfyUI with an API-style endpoint for batch local image generation — no subscriptions, no datacenter dependency.",
+      href: null,
+      linkLabel: null,
+    },
+    {
+      title: "Find my Foreman",
+      status: "Work in progress",
+      tags: ["GPS", "Field crews", "Side project"],
+      blurb:
+        "Fun experiment: GPS modules (when purchased) so users can locate foremen or workers in the field from a simple tracking setup.",
       href: null,
       linkLabel: null,
     },

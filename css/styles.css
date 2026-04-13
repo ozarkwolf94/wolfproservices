@@ -145,6 +145,38 @@ main {
   padding: 2.5rem 1.5rem 4rem;
 }
 
+.site-banner-slot {
+  margin: 0 0 1.75rem;
+}
+
+.site-banner-slot:empty {
+  margin: 0;
+}
+
+.site-banner {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  max-height: min(42vh, 320px);
+}
+
+@media (min-width: 900px) {
+  .site-banner img {
+    max-height: 280px;
+  }
+}
+
 .hero {
   padding: 2rem 0 3rem;
 }
@@ -481,6 +513,16 @@ section h2 {
 .app-card:hover {
   border-color: rgba(201, 162, 39, 0.35);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.app-card--no-logo::before {
+  content: "";
+  display: block;
+  width: 2.75rem;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), rgba(201, 162, 39, 0.15));
+  margin-bottom: 0.85rem;
 }
 
 .app-card-logo-wrap {
