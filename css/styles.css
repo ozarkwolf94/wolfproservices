@@ -143,37 +143,36 @@ main {
   max-width: var(--max);
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
+  position: relative;
+  z-index: 1;
 }
 
-.site-banner-slot {
-  margin: 0 0 1.75rem;
-}
-
-.site-banner-slot:empty {
-  margin: 0;
-}
-
-.site-banner {
-  margin: 0;
-  border-radius: var(--radius);
+/* Full-viewport banner wash — low contrast so content stays primary */
+.site-bg-banner {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
   overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg-elevated);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
-.site-banner img {
-  width: 100%;
-  height: auto;
-  display: block;
+.site-bg-banner__img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(140vw, 2200px);
+  height: min(90vh, 900px);
+  transform: translate(-50%, -50%);
   object-fit: cover;
-  object-position: center;
-  max-height: min(42vh, 320px);
+  object-position: center 30%;
+  opacity: 0.09;
+  filter: saturate(0.75) brightness(0.55);
 }
 
-@media (min-width: 900px) {
-  .site-banner img {
-    max-height: 280px;
+@media (prefers-reduced-motion: reduce) {
+  .site-bg-banner__img {
+    opacity: 0.06;
+    filter: saturate(0.65) brightness(0.5);
   }
 }
 
@@ -838,6 +837,8 @@ section h2 {
 }
 
 .site-footer {
+  position: relative;
+  z-index: 1;
   margin-top: 4rem;
   padding: 2rem 1.5rem;
   border-top: 1px solid var(--border);

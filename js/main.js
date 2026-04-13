@@ -6,6 +6,18 @@
     return window.WOLFPRO_SITE || {};
   }
 
+  /** Encode relative path segments so spaces in filenames work; leave http(s) URLs unchanged. */
+  function assetUrl(path) {
+    if (!path || typeof path !== "string") return "";
+    if (/^https?:\/\//i.test(path)) return path;
+    return path
+      .split("/")
+      .map(function (segment) {
+        return encodeURIComponent(segment);
+      })
+      .join("/");
+  }
+
   function applyBranding() {
     const cfg = getConfig();
     const href = cfg.siteFavicon;
@@ -28,7 +40,7 @@
   }
 
   function renderSiteBanner() {
-    const wrap = document.querySelector("[data-site-banner-wrap]");
+    const wrap = document.querySelector("[data-site-banner-bg]");
     if (!wrap) return;
     const cfg = getConfig();
     const b = cfg.siteBanner;
@@ -36,14 +48,11 @@
       wrap.innerHTML = "";
       return;
     }
+    const src = assetUrl(b.src);
     wrap.innerHTML =
-      '<figure class="site-banner">' +
-      '<img src="' +
-      escapeAttr(b.src) +
-      '" alt="' +
-      escapeAttr(b.alt || cfg.company || "WolfPro Services") +
-      '" width="2200" height="600" loading="eager" decoding="async" />' +
-      "</figure>";
+      '<img class="site-bg-banner__img" src="' +
+      escapeAttr(src) +
+      '" alt="" width="1920" height="640" loading="eager" decoding="async" />';
   }
 
   function fillHeaderFooter(currentNav) {
@@ -181,7 +190,7 @@
           : "";
       const logoHtml = app.logo
         ? '<div class="app-card-logo-wrap"><img class="app-card-logo" src="' +
-          escapeAttr(app.logo) +
+          escapeAttr(assetUrl(app.logo)) +
           '" alt="' +
           escapeAttr(app.title || "App logo") +
           '" width="360" height="180" loading="lazy" decoding="async" /></div>'

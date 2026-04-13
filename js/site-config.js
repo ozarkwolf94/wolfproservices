@@ -122,7 +122,7 @@ window.WOLFPRO_SITE = {
   },
 
   appsIntro:
-    "Products under active development — Flutter flagship apps, Python automation (including ComfyUI workflows), and field-ready tools, with the same rigor I bring to measurement and field work.",
+    "Every product listed here is in development — Flutter flagship apps, Python automation (ComfyUI), local-network scheduling (DreamTimer), and field-ready tools, with the same rigor I bring to measurement and field work.",
 
   servicesIntro:
     "Engagements are shaped around outcomes: correct geometry, reliable hardware and software, and clear communication with your team.",
@@ -161,7 +161,7 @@ If you are hiring or need contract support — metrology, field technical leader
     {
       id: "comfyworker",
       title: "ComfyWorker",
-      logo: null,
+      logo: "assets/images/ComfyWorker Lo.png",
       description:
         "A Python-based application that automates running ComfyUI and exposes a working HTTP endpoint for that automation. It is built for batch, local image generation on your own hardware — no subscription fees and no reliance on external datacenters — so pipelines stay private, predictable, and under your control.",
       href: null,
@@ -170,9 +170,18 @@ If you are hiring or need contract support — metrology, field technical leader
     {
       id: "find-my-foreman",
       title: "Find my Foreman",
-      logo: null,
+      logo: "assets/images/find my foreman logo.png",
       description:
         "A work-in-progress side project: with purchased GPS tracking modules, crews can see where their foremen or field workers are on the ground — a simple, practical answer to “where is everyone?” on busy job sites. Built for fun and experimentation around location-aware field tools.",
+      href: null,
+      linkLabel: null,
+    },
+    {
+      id: "dream-timer",
+      title: "DreamTimer",
+      logo: "assets/images/Dream Timer logo.png",
+      description:
+        "A lightweight program that scans your network for connected devices and lets you schedule routine shutdown and startup phases with remote access — so you can power down or bring servers, PCs, and compatible smart-home gear online from one place. In development, like the rest of the WolfPro software line.",
       href: null,
       linkLabel: null,
     },
@@ -253,7 +262,7 @@ If you are hiring or need contract support — metrology, field technical leader
     },
     {
       title: "ComfyWorker",
-      status: "Active development",
+      status: "In development",
       tags: ["Python", "ComfyUI", "Local", "Batch imaging", "Automation"],
       blurb:
         "Python architecture to automate ComfyUI with an API-style endpoint for batch local image generation — no subscriptions, no datacenter dependency.",
@@ -262,10 +271,19 @@ If you are hiring or need contract support — metrology, field technical leader
     },
     {
       title: "Find my Foreman",
-      status: "Work in progress",
-      tags: ["GPS", "Field crews", "Side project"],
+      status: "In development",
+      tags: ["GPS", "Field crews", "Mobile"],
       blurb:
-        "Fun experiment: GPS modules (when purchased) so users can locate foremen or workers in the field from a simple tracking setup.",
+        "GPS modules (when purchased) so crews can locate foremen or workers in the field — a simple answer to “where is everyone?” on busy job sites.",
+      href: null,
+      linkLabel: null,
+    },
+    {
+      title: "DreamTimer",
+      status: "In development",
+      tags: ["Network", "Scheduling", "Remote access", "Smart home"],
+      blurb:
+        "Scans the LAN for devices and schedules shutdown/startup phases with remote access — one app to coordinate servers, computers, and compatible smart devices.",
       href: null,
       linkLabel: null,
     },
