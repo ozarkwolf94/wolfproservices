@@ -70,6 +70,48 @@ window.WOLFPRO_SITE = {
     },
   ],
 
+  /**
+   * PolyWorks / metrology deep-dive (homepage section).
+   */
+  polyworks: {
+    title: "PolyWorks metrology",
+    lede:
+      "Industry-standard 3D metrology paired with Leica absolute laser trackers — for fabrication, inspection, alignment, and CAD-ready scanning.",
+    whatIs:
+      "PolyWorks is a professional metrology platform from InnovMetric used to capture, align, analyze, and report on 3D measurement data. It connects laser trackers, scanners, and other devices into one workflow for inspection, GD&T, assembly alignment, and reverse engineering — so you can prove parts to the print, diagnose fit issues on the floor, and hand stakeholders documentation with traceability.",
+    howItWorks:
+      "We work in your coordinate system: establish datums, run touch or scan campaigns as the job demands, and compare results to your CAD or drawing requirements. Using Leica ATS600 and Leica AT500 absolute laser trackers, we combine direct measurement (probing and precision alignment where contact is appropriate) with contactless scanning where you need dense surface data without touching the part — large weldments, delicate finishes, or hard-to-reach geometry all stay in play.",
+    equipment: [
+      {
+        name: "Leica ATS600",
+        summary:
+          "A scanning laser tracker built for high-speed, non-contact 3D scanning at working range — ideal for capturing complex surfaces and large structures with dense point clouds for inspection, deviation analysis, or modeling.",
+      },
+      {
+        name: "Leica AT500",
+        summary:
+          "An absolute laser tracker for accurate 3D measurement and alignment without chaining through a ladder of stations — faster setup, stable results, and a strong fit for shop-floor and field deployment.",
+      },
+    ],
+    whyTitle: "Why PolyWorks — and WolfPro — for fabrication",
+    whyBullets: [
+      "Catch problems before they become assembly crises — verify geometry, GD&T, and interfaces while parts are still in the shop.",
+      "One software ecosystem from measurement to report — PolyWorks keeps scanning, probing, alignment, and inspection coherent instead of juggling disconnected tools.",
+      "Hardware matched to real jobs — touch where you need repeatability and trace points; scan where you need full shape or contact-free capture.",
+      "Operators who understand fabrication — we align to how mills, CNC shops, and heavy fab actually build, not just how the software manual reads.",
+      "Deliverables that feed manufacturing — not only PDF reports, but geometry and insight your programmers and engineers can use.",
+    ],
+    whyClosing:
+      "Partnering with WolfPro means you get disciplined PolyWorks workflows, Leica-class hardware on site when needed, and a direct line to someone accountable for the result — from first scan to the answer your team acts on.",
+    scanning: {
+      title: "3D scanning for CAM and SolidWorks",
+      body:
+        "We offer 3D scanning to lock onto as-built shape and feed modeling for CAM and native SolidWorks parts and assemblies. Whether you are programming toolpaths from real stock, reverse-engineering a worn or legacy component, or tightening the loop between the floor and your digital models, we focus on deliverables manufacturing can use: usable surfaces, sensible datums, and files that import cleanly so you spend time cutting metal, not fighting mesh artifacts.",
+    },
+    ctaLabel: "Discuss PolyWorks or scanning",
+    ctaSubject: "PolyWorks / 3D scanning inquiry",
+  },
+
   appsIntro:
     "Products under active development — Flutter and adjacent stacks, with the same rigor I bring to measurement and field work.",
 

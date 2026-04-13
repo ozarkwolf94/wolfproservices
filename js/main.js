@@ -277,6 +277,95 @@
     });
   }
 
+  function renderPolyworks() {
+    const root = document.getElementById("polyworks-root");
+    if (!root) return;
+    const cfg = getConfig();
+    const p = cfg.polyworks;
+    if (!p) {
+      root.innerHTML = "";
+      return;
+    }
+    const email = cfg.email || "";
+    const subject = p.ctaSubject || "PolyWorks inquiry";
+    const mailHref = email ? "mailto:" + email + "?subject=" + encodeURIComponent(subject) : "#";
+
+    const equipHtml = (p.equipment || [])
+      .map(function (item) {
+        if (!item || !item.name) return "";
+        return (
+          '<article class="polyworks-equip-card">' +
+          "<h4>" +
+          escapeHtml(item.name) +
+          "</h4>" +
+          '<p class="polyworks-equip-desc">' +
+          escapeHtml(item.summary || "") +
+          "</p>" +
+          "</article>"
+        );
+      })
+      .join("");
+
+    const bulletsHtml = (p.whyBullets || [])
+      .map(function (line) {
+        return "<li>" + escapeHtml(line) + "</li>";
+      })
+      .join("");
+
+    root.innerHTML =
+      '<div class="section-head">' +
+      '<h2 id="polyworks-heading">' +
+      escapeHtml(p.title || "PolyWorks") +
+      "</h2>" +
+      '<p class="section-sub">' +
+      escapeHtml(p.lede || "") +
+      "</p>" +
+      "</div>" +
+      '<div class="polyworks-panels">' +
+      '<div class="polyworks-panel">' +
+      "<h3>What PolyWorks is</h3>" +
+      '<p class="polyworks-prose">' +
+      escapeHtml(p.whatIs || "") +
+      "</p>" +
+      "<h3>How we work on your floor</h3>" +
+      '<p class="polyworks-prose">' +
+      escapeHtml(p.howItWorks || "") +
+      "</p>" +
+      "</div>" +
+      '<div class="polyworks-panel polyworks-panel--hardware">' +
+      "<h3>Laser tracker hardware</h3>" +
+      '<p class="polyworks-hardware-lede">We use Leica absolute laser trackers for direct (probed) measurement and contactless scanning — chosen to match each zone of the part and the tolerance you are holding.</p>' +
+      '<div class="polyworks-equip-grid">' +
+      equipHtml +
+      "</div>" +
+      "</div>" +
+      "</div>" +
+      '<div class="polyworks-panel polyworks-panel--accent">' +
+      "<h3>" +
+      escapeHtml(p.whyTitle || "Why partner with WolfPro") +
+      "</h3>" +
+      '<ul class="polyworks-why-list">' +
+      bulletsHtml +
+      "</ul>" +
+      (p.whyClosing
+        ? '<p class="polyworks-prose polyworks-prose--tight">' + escapeHtml(p.whyClosing) + "</p>"
+        : "") +
+      "</div>" +
+      '<div class="polyworks-panel polyworks-panel--scan">' +
+      "<h3>" +
+      escapeHtml((p.scanning && p.scanning.title) || "3D scanning") +
+      "</h3>" +
+      '<p class="polyworks-prose">' +
+      escapeHtml((p.scanning && p.scanning.body) || "") +
+      "</p>" +
+      '<a class="btn btn-primary polyworks-cta" href="' +
+      escapeAttr(mailHref) +
+      '">' +
+      escapeHtml(p.ctaLabel || "Contact") +
+      "</a>" +
+      "</div>";
+  }
+
   function fillAbout() {
     const root = document.querySelector("[data-about-bio]");
     if (!root) return;
@@ -340,6 +429,7 @@
     renderHeroVisual();
     fillSectionIntros();
     renderCapabilityStrip();
+    renderPolyworks();
     renderFeaturedApps();
     renderMusicSpotlight();
     fillAbout();
