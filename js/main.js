@@ -1,5 +1,5 @@
 /**
- * Injects config-driven bits into the DOM. Pages call initPage({ currentNav }) after DOM ready.
+ * Injects config-driven bits into the DOM. Pages call wolfproInit({ currentNav }) after DOM ready.
  */
 (function () {
   function getConfig() {
@@ -20,6 +20,12 @@
       const email = cfg.email || "";
       el.textContent = email;
       if (el.tagName === "A") el.href = "mailto:" + email;
+    });
+
+    document.querySelectorAll("[data-site-email-inquiry]").forEach(function (el) {
+      const email = cfg.email || "";
+      const subject = "Employment or contract inquiry";
+      el.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject);
     });
 
     const music = cfg.music || {};
@@ -50,7 +56,7 @@
     services.forEach(function (s) {
       const article = document.createElement("article");
       article.className = "card";
-      article.setAttribute("id", s.id || "");
+      if (s.id) article.id = s.id;
       article.innerHTML =
         '<div class="card-icon" aria-hidden="true">' +
         (s.icon || "•") +
@@ -58,10 +64,10 @@
         "<h3>" +
         escapeHtml(s.title || "") +
         "</h3>" +
-        "<p class=\"summary\">" +
+        '<p class="summary">' +
         escapeHtml(s.summary || "") +
         "</p>" +
-        "<p class=\"detail\">" +
+        '<p class="detail">' +
         escapeHtml(s.detail || "") +
         "</p>" +
         '<a class="card-cta" href="' +
@@ -113,6 +119,184 @@
     });
   }
 
+  function renderFeaturedApps() {
+    const root = document.getElementById("featured-app-grid");
+    if (!root) return;
+    const cfg = getConfig();
+    const apps = cfg.featuredApps || [];
+    root.innerHTML = "";
+    apps.forEach(function (app, index) {
+      const article = document.createElement("article");
+      article.className = "app-card";
+      const titleId = app.id ? app.id + "-title" : "featured-app-title-" + index;
+      if (app.id) article.id = app.id;
+      article.setAttribute("aria-labelledby", titleId);
+      const link =
+        app.href && app.linkLabel
+          ? '<a class="app-card-link" href="' +
+            escapeAttr(app.href) +
+            '" target="_blank" rel="noopener noreferrer">' +
+            escapeHtml(app.linkLabel) +
+            "</a>"
+          : "";
+      const logoHtml = app.logo
+        ? '<div class="app-card-logo-wrap"><img class="app-card-logo" src="' +
+          escapeAttr(app.logo) +
+          '" alt="' +
+          escapeAttr(app.title || "App logo") +
+          '" width="360" height="180" loading="lazy" decoding="async" /></div>'
+        : "";
+      article.innerHTML =
+        logoHtml +
+        '<h3 id="' +
+        escapeAttr(titleId) +
+        '">' +
+        escapeHtml(app.title || "") +
+        "</h3>" +
+        '<p class="app-card-desc">' +
+        escapeHtml(app.description || "") +
+        "</p>" +
+        link;
+      root.appendChild(article);
+    });
+  }
+
+  function renderMusicSpotlight() {
+    const root = document.getElementById("music-spotlight");
+    if (!root) return;
+    const cfg = getConfig();
+    const m = cfg.music || {};
+    const label = m.label || "Music";
+    const url = m.url || "#";
+    const desc = m.description || "";
+    const logo = m.logo || "";
+    const photo = m.photo || "";
+    const ctaText = m.cta || "Visit music site ↗";
+
+    root.className =
+      "music-spotlight" + (photo ? " music-spotlight--split" : " music-spotlight--compact");
+
+    const photoBlock = photo
+      ? '<div class="music-spotlight-visual">' +
+        '<img class="music-spotlight-photo" src="' +
+        escapeAttr(photo) +
+        '" alt="' +
+        escapeAttr(label + " — artist photo") +
+        '" width="600" height="900" loading="lazy" decoding="async" />' +
+        "</div>"
+      : "";
+
+    const logoBlock = logo
+      ? '<div class="music-spotlight-logo-wrap">' +
+        '<img class="music-spotlight-logo" src="' +
+        escapeAttr(logo) +
+        '" alt="' +
+        escapeAttr(label + " logo") +
+        '" width="400" height="120" loading="lazy" decoding="async" />' +
+        "</div>"
+      : "";
+
+    root.innerHTML =
+      '<div class="music-spotlight-inner">' +
+      photoBlock +
+      '<div class="music-spotlight-copy">' +
+      logoBlock +
+      '<p class="music-spotlight-lede">' +
+      escapeHtml(desc) +
+      "</p>" +
+      '<a class="btn btn-primary music-spotlight-cta" href="' +
+      escapeAttr(url) +
+      '" target="_blank" rel="noopener noreferrer">' +
+      escapeHtml(ctaText) +
+      "</a>" +
+      "</div>" +
+      "</div>";
+  }
+
+  function renderHeroVisual() {
+    const root = document.querySelector("[data-hero-visual]");
+    if (!root) return;
+    const cfg = getConfig();
+    const img = cfg.heroImage;
+    if (!img || !img.src) {
+      root.innerHTML = "";
+      return;
+    }
+    root.innerHTML =
+      '<figure class="hero-photo-frame">' +
+      '<img src="' +
+      escapeAttr(img.src) +
+      '" alt="' +
+      escapeAttr(img.alt || "") +
+      '" width="900" height="1200" loading="eager" decoding="async" />' +
+      "</figure>";
+  }
+
+  function renderCapabilityStrip() {
+    const root = document.getElementById("capability-strip");
+    if (!root) return;
+    const cfg = getConfig();
+    const items = cfg.capabilityStrip || [];
+    root.innerHTML = "";
+    items.forEach(function (item) {
+      if (!item || !item.src) return;
+      const article = document.createElement("article");
+      article.className = "capability-card";
+      article.innerHTML =
+        '<div class="capability-card-visual">' +
+        '<img src="' +
+        escapeAttr(item.src) +
+        '" alt="' +
+        escapeAttr(item.alt || "") +
+        '" width="800" height="600" loading="lazy" decoding="async" />' +
+        "</div>" +
+        '<p class="capability-card-label">' +
+        escapeHtml(item.label || "") +
+        "</p>";
+      root.appendChild(article);
+    });
+
+    const credit = document.querySelector("[data-photo-credit]");
+    if (credit) {
+      const show = Boolean(cfg.heroImage && cfg.heroImage.src) || items.length > 0;
+      credit.hidden = !show;
+    }
+  }
+
+  function fillSectionIntros() {
+    const cfg = getConfig();
+    const map = [
+      ["[data-expertise-intro]", cfg.expertiseIntro],
+      ["[data-apps-intro]", cfg.appsIntro],
+      ["[data-services-intro]", cfg.servicesIntro],
+    ];
+    map.forEach(function (pair) {
+      const el = document.querySelector(pair[0]);
+      const text = pair[1];
+      if (el && text) el.textContent = text;
+    });
+  }
+
+  function fillAbout() {
+    const root = document.querySelector("[data-about-bio]");
+    if (!root) return;
+    const cfg = getConfig();
+    const text = cfg.aboutBio;
+    if (!text) return;
+    root.innerHTML = "";
+    String(text)
+      .split(/\n\n+/)
+      .map(function (p) {
+        return p.trim();
+      })
+      .filter(Boolean)
+      .forEach(function (para) {
+        const p = document.createElement("p");
+        p.textContent = para;
+        root.appendChild(p);
+      });
+  }
+
   function escapeHtml(str) {
     return String(str)
       .replace(/&/g, "&amp;")
@@ -129,22 +313,36 @@
     const cfg = getConfig();
     const h1 = document.querySelector("[data-hero-title]");
     const lede = document.querySelector("[data-hero-lede]");
-    if (h1) h1.textContent = cfg.company || h1.textContent;
-    if (lede) lede.textContent = cfg.tagline || lede.textContent;
-  }
-
-  function fillMusicBanner() {
-    const cfg = getConfig();
-    const el = document.querySelector("[data-music-description]");
-    const music = cfg.music || {};
-    if (el && music.description) el.textContent = music.description;
+    const highlightsRoot = document.querySelector("[data-hero-highlights]");
+    if (h1) {
+      h1.textContent = cfg.heroTitle || cfg.personName || cfg.company || h1.textContent;
+    }
+    if (lede) {
+      lede.textContent = cfg.heroLede || cfg.tagline || lede.textContent;
+    }
+    if (highlightsRoot) {
+      highlightsRoot.innerHTML = "";
+      const items = cfg.heroHighlights || [];
+      items.forEach(function (text) {
+        if (!text) return;
+        const li = document.createElement("li");
+        li.textContent = text;
+        highlightsRoot.appendChild(li);
+      });
+      highlightsRoot.hidden = highlightsRoot.children.length === 0;
+    }
   }
 
   window.wolfproInit = function (opts) {
     opts = opts || {};
     fillHeaderFooter(opts.currentNav);
     fillHero();
-    fillMusicBanner();
+    renderHeroVisual();
+    fillSectionIntros();
+    renderCapabilityStrip();
+    renderFeaturedApps();
+    renderMusicSpotlight();
+    fillAbout();
     renderServices();
     renderProjects();
   };
