@@ -81,7 +81,7 @@ window.WOLFPRO_SITE = {
 
 WolfPro maintains strong connections across Northeast Arkansas to coordinate general contracting when a project calls for it. In house, we focus on helping businesses keep hardware and software current, stable, and aligned with how people actually work — so systems run smoothly instead of fighting the people who depend on them.
 
-I work alongside Industrial Technology Solutions Inc., a Northeast Arkansas–based partner that provides access to a broader network of metrology solutions when a job requires additional capability. That relationship stays in the background; what you get is direct accountability from me and WolfPro.
+I work closely and often with Industrial Technology Solutions Inc., a Northeast Arkansas–based firm. Together we draw on a strong network of metrology solutions and field experience, so engagements that need extra capability or coordination are handled smoothly while you still have a clear point of contact through me and WolfPro.
 
 If you are hiring or need contract support — metrology, field technical leadership, or software that fits your operation — I would welcome a conversation.`,
 
